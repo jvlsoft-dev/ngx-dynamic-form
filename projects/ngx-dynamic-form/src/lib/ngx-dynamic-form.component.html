@@ -1,0 +1,18 @@
+<div *ngIf="!onlyFields; else rowForm" class="card card-custom gutter-b">
+    <app-header-form [canGoBack]="canGoBack" [title]="title" class="card card-custom"></app-header-form>
+    <div class="card-body pt-0">
+        <ng-container [ngTemplateOutlet]="rowForm"></ng-container>
+    </div>
+</div>
+
+<ng-template #rowForm>
+    <form (submit)="handleSubmit($event)" [formGroup]="form" [class]="!tempOnlyThisField ? 'form form-label-right' : ''"
+        errorTailor>
+        <div [class]="!tempOnlyThisField ? 'form-group row' : ''">
+            <ng-container *ngFor="let field of config" [config]="field" [group]="form" dynamicField>
+            </ng-container>
+        </div>
+        <form-button [isLoading]="isLoading" *ngIf="!!saveButton" [group]="form"></form-button>
+        <ng-content select="[footer]"></ng-content>
+    </form>
+</ng-template>
