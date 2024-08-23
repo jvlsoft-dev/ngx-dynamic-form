@@ -6,18 +6,21 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormInputComponent } from './fields/form-input/form-input.component';
 import { IFieldConfig } from './interfaces/ifield-config';
 import { FormHelperService } from './services/form-helper.service';
 import { CommonModule } from '@angular/common';
+import { DynamicFieldDirective } from './directives/dynamic-field.directive';
+import { FormButtonComponent } from './fields/form-button/form-button.component';
+import { FormHeaderComponent } from './components/form-header/form-header.component';
 
 @Component({
   selector: 'ngx-dynamic-form',
   templateUrl: './ngx-dynamic-form.component.html',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, DynamicFieldDirective, FormButtonComponent, FormHeaderComponent],
 })
 export class DynamicFormComponent implements OnInit {
   /**
@@ -50,7 +53,7 @@ export class DynamicFormComponent implements OnInit {
     because it's repetitive the validation for only fields or not
     */
   @Input() tempOnlyThisField = false;
-  @Input() form?: FormGroup;
+  @Input() form!: FormGroup;
   @Output() save: EventEmitter<any> = new EventEmitter<any>();
   isLoading: boolean = false;
 
@@ -62,15 +65,15 @@ export class DynamicFormComponent implements OnInit {
   ) {}
 
   get value() {
-    return this.form?.value;
+    return this.form.value;
   }
 
   get control() {
-    return this.form?.controls;
+    return this.form.controls;
   }
 
   get invalid() {
-    return this.form?.invalid;
+    return this.form.invalid;
   }
 
   ngOnInit() {
@@ -135,14 +138,14 @@ export class DynamicFormComponent implements OnInit {
    * Marks the control and all its descendant controls as touched.
    */
   markAllAsTouched() {
-    this.form?.markAllAsTouched();
+    this.form.markAllAsTouched();
   }
 
   /**
    * Retrieves a child control given the control's name or path.
    */
   getControl(control: any) {
-    return this.form?.get(control);
+    return this.form.get(control);
   }
 
   /**
@@ -151,6 +154,6 @@ export class DynamicFormComponent implements OnInit {
    * @param value Value to set.
    */
   setValue(name: string, value: any) {
-    this.form?.controls[name].setValue(value, { emitEvent: true });
+    this.form.controls[name].setValue(value, { emitEvent: true });
   }
 }

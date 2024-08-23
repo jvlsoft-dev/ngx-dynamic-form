@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import { ComponentRef, Type } from '@angular/core';
 import { IField } from './ifield';
 import { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
 
@@ -35,6 +35,11 @@ export interface IFieldConfig {
    * Html type attribute of the field. Example: 'text', 'password', 'email', 'submit', etc.
    */
   fieldType?: string;
+  /**
+   * Represents a component created by a ComponentFactory. Provides access to the component
+   * instance and related objects, and provides the means of destroying the instance.
+   */
+  component?: ComponentRef<any>;
   /**
    * Array of ValidatorFn.
    */

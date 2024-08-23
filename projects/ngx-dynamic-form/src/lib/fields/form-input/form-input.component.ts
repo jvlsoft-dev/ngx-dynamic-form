@@ -10,6 +10,7 @@ import { IFieldConfig } from '../../interfaces/ifield-config';
   standalone: true,
 })
 export class FormInputComponent implements IField {
+  // TODO: Create the component structure.
   config!: IFieldConfig;
   group!: FormGroup<any>;
 }

@@ -7,8 +7,10 @@ import { IFieldConfig } from '../../interfaces/ifield-config';
   selector: 'form-select',
   templateUrl: './form-select.component.html',
   styleUrls: ['./form-select.component.css'],
+  standalone: true,
 })
 export class FormSelectComponent implements IField {
+  // TODO: Create the component structure.
   config!: IFieldConfig;
   group!: FormGroup<any>;
 }

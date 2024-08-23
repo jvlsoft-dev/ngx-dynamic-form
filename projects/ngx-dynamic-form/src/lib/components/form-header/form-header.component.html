@@ -1,0 +1,11 @@
+<!-- TODO: Change styles -->
+<div class="card-header">
+    <div class="card-title">
+        <h3 class="card-label">{{title}}</h3>
+    </div>
+    <div *ngIf="!!canGoBack" class="card-toolbar">
+        <a (click)="goBack()" class="btn btn-light" type="button">
+            <i class="fa fa-arrow-left"></i>Atrás
+        </a>
+    </div>
+</div>

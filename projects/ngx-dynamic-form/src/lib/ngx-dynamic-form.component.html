@@ -1,5 +1,6 @@
+<!-- TODO: Change styles -->
 <div *ngIf="!onlyFields; else rowForm" class="card card-custom gutter-b">
-    <app-header-form [canGoBack]="canGoBack" [title]="title" class="card card-custom"></app-header-form>
+    <form-header [canGoBack]="canGoBack" [title]="title" class="card card-custom"></form-header>
     <div class="card-body pt-0">
         <ng-container [ngTemplateOutlet]="rowForm"></ng-container>
     </div>
