@@ -7,20 +7,28 @@ import {
   Output,
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FormInputComponent } from './fields/form-input/form-input.component';
 import { IFieldConfig } from './interfaces/ifield-config';
 import { FormHelperService } from './services/form-helper.service';
 import { CommonModule } from '@angular/common';
 import { DynamicFieldDirective } from './directives/dynamic-field.directive';
-import { FormButtonComponent } from './fields/form-button/form-button.component';
+import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormHeaderComponent } from './components/form-header/form-header.component';
 
 @Component({
   selector: 'ngx-dynamic-form',
   templateUrl: './ngx-dynamic-form.component.html',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, DynamicFieldDirective, FormButtonComponent, FormHeaderComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    DynamicFieldDirective,
+    FormButtonComponent,
+    FormHeaderComponent,
+    // TODO: Resolve ActivatedRoute bug
+    // RouterModule,
+  ],
 })
 export class DynamicFormComponent implements OnInit {
   /**
@@ -47,12 +55,6 @@ export class DynamicFormComponent implements OnInit {
    * If the form has a button to save. Default true.
    */
   @Input() saveButton: boolean = true;
-  /**
-    TODO:
-    This Input must to be optimized for a better behavior in future,
-    because it's repetitive the validation for only fields or not
-    */
-  @Input() tempOnlyThisField = false;
   @Input() form!: FormGroup;
   @Output() save: EventEmitter<any> = new EventEmitter<any>();
   isLoading: boolean = false;
@@ -61,7 +63,8 @@ export class DynamicFormComponent implements OnInit {
     private _fb: FormBuilder,
     public _formService: FormHelperService,
     private _cdr: ChangeDetectorRef,
-    private _route: ActivatedRoute
+    // TODO: Resolve ActivatedRoute bug
+    // private _route: ActivatedRoute
   ) {}
 
   get value() {
@@ -78,7 +81,9 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     // Get id for the route
-    const id = this._route.snapshot.params['id'];
+    // TODO: Resolve ActivatedRoute bug
+    // const id = this._route.snapshot.params['id'];
+    const id = 0;
     // Set title form.
     this.title =
       (!!this.hasPrefix ? (!!id ? 'Editar ' : 'Crear ') : '') + this.title;

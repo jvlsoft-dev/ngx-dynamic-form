@@ -1,6 +1,7 @@
 import { ComponentRef, Type } from '@angular/core';
 import { IField } from './ifield';
 import { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
+import { IInputConfig } from './iinput-config';
 
 export interface IFieldConfig {
   /**
@@ -12,17 +13,29 @@ export interface IFieldConfig {
    */
   name: string;
   /**
-   * Class to apply to the component. Example: `col-lg-4`.
+   * Class to apply to the field. Example: `col-lg-4`.
    */
   class: string;
-  /**
-   * Default value.
-   */
-  value?: any;
   /**
    * Component label.
    */
   label?: string;
+  /**
+   * Text to display below the field.
+   */
+  helperText?: string;
+  /**
+   * Html type attribute of the field. Example: 'text', 'password', 'email', 'submit', etc.
+   */
+  fieldType?: string;
+  /**
+   * Field placeholder.
+   */
+  placeholder?: string;
+  /**
+   * Style to apply to the field. Example: `background-color: #fff;`
+   */
+  style?: string;
   /**
    * Fields order. Field with order 1 goes first that with order 2.
    */
@@ -32,9 +45,20 @@ export interface IFieldConfig {
    */
   disabled?: boolean;
   /**
-   * Html type attribute of the field. Example: 'text', 'password', 'email', 'submit', etc.
+   * If the field is readonly.
    */
-  fieldType?: string;
+  readonly?: boolean;
+  /**
+   * Default value.
+   */
+  value?: any;
+  /**
+   * Object with other options, this give the possibility to add other functionalities.
+   * Example: In the municipality component can be enable dpa with:
+   * `options: { dpa: true }`.
+   */
+  // TODO: Update this property to one or more properties with defined attributes to increase code readability.
+  options?: IInputConfig;
   /**
    * Represents a component created by a ComponentFactory. Provides access to the component
    * instance and related objects, and provides the means of destroying the instance.

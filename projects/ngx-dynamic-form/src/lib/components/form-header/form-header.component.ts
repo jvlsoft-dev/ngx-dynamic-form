@@ -4,7 +4,6 @@ import { CommonModule, Location } from '@angular/common';
 @Component({
   selector: 'form-header',
   templateUrl: './form-header.component.html',
-  styleUrls: ['./form-header.component.css'],
   imports: [CommonModule],
   standalone: true,
 })

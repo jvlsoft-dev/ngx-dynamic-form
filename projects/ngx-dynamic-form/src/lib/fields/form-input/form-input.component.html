@@ -1,1 +1,42 @@
-<p>form-input works!</p>
+<div [hidden]="config.fieldType === 'hidden'" [ngClass]="config.class" [formGroup]="group">
+        <form-label *ngIf="showLabel" [config]="config"></form-label>
+        <div [class.input-group]="config.fieldType === 'password'" style="position: relative">
+            <!-- Static text -->
+            <div *ngIf="!!config.options?.staticText"
+                [ngClass]="{
+                    'invalid-style': formService.isControlInvalid(group, config.name),
+                    'valid-style': formService.isControlValid(group, config.name),
+                    'static-text-input': true
+                }">
+                {{config.options?.staticText}}
+            </div>
+            <ng-container [ngTemplateOutlet]="input"></ng-container>
+            <!-- Helper text -->
+            <span *ngIf="!!config.helperText" [innerHTML]="config.helperText" class="form-text text-muted">
+            </span>
+        </div>
+    <ng-template #input>
+        <div id="inputDiv">
+            <!-- Input -->
+            <input
+                [ngClass]="{
+                    'form-control': true,
+                    'is-invalid': formService.isControlInvalid(group, config.name),
+                    'text-end': config.fieldType === 'number'
+                }"
+                [formControlName]="config.name"
+                [id]="config.name"
+                [min]="config.options?.min"
+                [step]="config.options?.step"
+                [placeholder]="config.placeholder || ''"
+                [readOnly]="config.readonly ?? !!config.readonly"
+                [type]="config.fieldType"
+            />
+            <!-- <span *ngIf="config.fieldType === 'password' && !!group.get(config.name).value" class="eyesPassLogin">
+                <i (click)="togglePassword()" [ngClass]="type === 'password' ? 'fas fa-eye': 'fas fa-eye-slash'"
+                    style="cursor: pointer">
+                </i>
+            </span> -->
+        </div>
+    </ng-template>
+</div>

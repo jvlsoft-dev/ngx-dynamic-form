@@ -1,1 +1,3 @@
-<p>form-label works!</p>
+<label [for]="config.name">{{ config.label || config.name.toUpperCase() }}
+    <span *ngIf="formService.isRequired(config)" class="text-danger">*</span>
+</label>

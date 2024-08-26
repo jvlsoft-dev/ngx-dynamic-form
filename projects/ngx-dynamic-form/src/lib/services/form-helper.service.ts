@@ -50,4 +50,26 @@ export class FormHelperService {
   isRequired(config: IFieldConfig) {
     return !!config.validation?.find((i) => i.name === 'required');
   }
+
+  /**
+   * Check if the Control in the FormComponent is valid.
+   * @param form - Form to check.
+   * @param controlName - Control name to check.
+   * @returns If is the control valid.
+   */
+  isControlValid(form: FormGroup, controlName: string): boolean {
+    const control = form.controls[controlName];
+    return !!control && control.valid && (control.dirty || control.touched);
+  }
+
+  /**
+   * Check if the Control in the FormComponent is invalid.
+   * @param form - Form to check.
+   * @param controlName - Control name to check.
+   * @returns If is the control invalid.
+   */
+  isControlInvalid(form: FormGroup, controlName: string): boolean {
+    const control = form.controls[controlName];
+    return !!control && control.invalid && (control.dirty || control.touched);
+  }
 }

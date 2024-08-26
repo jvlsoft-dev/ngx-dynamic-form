@@ -1,15 +1,14 @@
-<!-- TODO: Change styles -->
-<div *ngIf="!onlyFields; else rowForm" class="card card-custom gutter-b">
-    <form-header [canGoBack]="canGoBack" [title]="title" class="card card-custom"></form-header>
-    <div class="card-body pt-0">
+<div class="card">
+    <form-header *ngIf="!onlyFields" [canGoBack]="canGoBack" [title]="title" class="card-header"></form-header>
+    <div class="card-body">
         <ng-container [ngTemplateOutlet]="rowForm"></ng-container>
     </div>
 </div>
 
 <ng-template #rowForm>
-    <form (submit)="handleSubmit($event)" [formGroup]="form" [class]="!tempOnlyThisField ? 'form form-label-right' : ''"
-        errorTailor>
-        <div [class]="!tempOnlyThisField ? 'form-group row' : ''">
+    <!-- TODO: Make responsive -->
+    <form (submit)="handleSubmit($event)" [formGroup]="form" class="form" errorTailor>
+        <div class="form-group row">
             <ng-container *ngFor="let field of config" [config]="field" [group]="form" dynamicField>
             </ng-container>
         </div>
