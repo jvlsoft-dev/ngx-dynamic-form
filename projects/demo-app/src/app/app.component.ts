@@ -19,9 +19,27 @@ export class AppComponent {
       fieldType: 'text',
       placeholder: 'Text example',
       style: 'padding: 10px',
-      order: 1,
       disabled: false,
-      // TODO: 
+      readonly: false,
+      value: '',
+      validation: [Validators.required],
+      options: {
+        showLabel: true,
+        staticText: 'This is an static text.',
+        min: 0,
+        step: 1
+      }
+    },
+    {
+      type: FormInputComponent,
+      name: 'number',
+      class: 'col-lg-3 col-md-3 col-sm-12',
+      label: 'Number',
+      helperText: 'This is an helper text.',
+      fieldType: 'number',
+      placeholder: 'Text example',
+      style: 'padding: 10px',
+      disabled: false,
       readonly: false,
       value: '',
       validation: [Validators.required],

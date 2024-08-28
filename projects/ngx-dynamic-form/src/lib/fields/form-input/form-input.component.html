@@ -1,13 +1,8 @@
-<div [hidden]="config.fieldType === 'hidden'" [ngClass]="config.class" [formGroup]="group">
+<div [hidden]="config.fieldType === 'hidden'" [formGroup]="group">
         <form-label *ngIf="showLabel" [config]="config"></form-label>
-        <div [class.input-group]="config.fieldType === 'password'" style="position: relative">
+        <div>
             <!-- Static text -->
-            <div *ngIf="!!config.options?.staticText"
-                [ngClass]="{
-                    'invalid-style': formService.isControlInvalid(group, config.name),
-                    'valid-style': formService.isControlValid(group, config.name),
-                    'static-text-input': true
-                }">
+            <div *ngIf="!!config.options?.staticText">
                 {{config.options?.staticText}}
             </div>
             <ng-container [ngTemplateOutlet]="input"></ng-container>
@@ -16,7 +11,7 @@
             </span>
         </div>
     <ng-template #input>
-        <div id="inputDiv">
+        <div id="inputDiv" class="d-flex align-items-center">
             <!-- Input -->
             <input
                 [ngClass]="{
@@ -30,13 +25,14 @@
                 [step]="config.options?.step"
                 [placeholder]="config.placeholder || ''"
                 [readOnly]="config.readonly ?? !!config.readonly"
-                [type]="config.fieldType"
+                [type]="config.fieldType === 'password' ? type : config.fieldType || 'text'"
             />
-            <!-- <span *ngIf="config.fieldType === 'password' && !!group.get(config.name).value" class="eyesPassLogin">
+            <!-- Eye Icon -->
+            <span *ngIf="config.fieldType === 'password' && !!group.get(config.name)?.value" style="margin-left: -30px;">
                 <i (click)="togglePassword()" [ngClass]="type === 'password' ? 'fas fa-eye': 'fas fa-eye-slash'"
                     style="cursor: pointer">
                 </i>
-            </span> -->
+            </span>
         </div>
     </ng-template>
 </div>

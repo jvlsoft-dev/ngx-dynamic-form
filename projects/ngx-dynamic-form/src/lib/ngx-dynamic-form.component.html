@@ -9,8 +9,10 @@
     <!-- TODO: Make responsive -->
     <form (submit)="handleSubmit($event)" [formGroup]="form" class="form" errorTailor>
         <div class="form-group row">
-            <ng-container *ngFor="let field of config" [config]="field" [group]="form" dynamicField>
-            </ng-container>
+            <div *ngFor="let field of config" [class]="field.class">
+                <ng-container  [config]="field" [group]="form" dynamicField>
+                </ng-container>
+            </div>
         </div>
         <form-button [isLoading]="isLoading" *ngIf="!!saveButton" [group]="form"></form-button>
         <ng-content select="[footer]"></ng-content>

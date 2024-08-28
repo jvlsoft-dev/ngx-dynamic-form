@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IField } from '../../interfaces/ifield';
 import { IFieldConfig } from '../../interfaces/ifield-config';
@@ -10,21 +10,20 @@ import { FormHelperService } from '../../services/form-helper.service';
 @Component({
   selector: 'form-input',
   templateUrl: './form-input.component.html',
-  styleUrls: ['./form-input.component.css'],
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormLabelComponent],
 })
 export class FormInputComponent extends DestroyComponent implements IField {
-  // TODO: Create the component structure.
   config!: IFieldConfig;
   group!: FormGroup<any>;
+  type = 'password';
 
   constructor(
     public formService: FormHelperService,
-    private _cdr: ChangeDetectorRef,
   ) {
     super();
   }
+
   /**
    * Get if the input has a label.
    */
@@ -33,5 +32,12 @@ export class FormInputComponent extends DestroyComponent implements IField {
       typeof this.config.options?.showLabel === 'undefined' ||
       !!this.config.options?.showLabel
     );
+  }
+
+  /**
+   * Show and hidden the password.
+   */
+  togglePassword() {
+    this.type = this.type === 'password' ? 'text' : 'password';
   }
 }
