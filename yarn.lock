@@ -1703,6 +1703,13 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz#4fc56c15c580b9adb7dc3c333a134e540b44bfb1"
   integrity sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==
 
+"@ng-select/ng-select@11.x":
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-11.2.0.tgz#33048ddeb6a524078f3134167d75137239bf1c6e"
+  integrity sha512-lTyw93kFdKGecp9eKmOP0PQSCaAJS8DCt4D60ns055+ixvRSp2fuXAuJUvn1e3gAsvpZor37osmYlOJ4LYwYIA==
+  dependencies:
+    tslib "^2.3.1"
+
 "@ngtools/webpack@16.2.14":
   version "16.2.14"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-16.2.14.tgz#7af4a1afa7c5b8e6ec8bca9491b91cfade694ff7"
@@ -6791,6 +6798,11 @@ tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.0:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.3.tgz#0438f810ad7a9edcde7a241c3d80db693c8cbfe0"
   integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==
+
+tslib@^2.3.1:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.7.0.tgz#d9b40c5c40ab59e8738f297df3087bf1a2690c01"
+  integrity sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==
 
 tuf-js@^1.1.7:
   version "1.1.7"

@@ -43,6 +43,22 @@ export class FormHelperService {
   }
 
   /**
+   * Check if a control has an specific validation error.
+   * @param form - Form to check.
+   * @param controlName - Control name to check.
+   * @param validation - Validation to check
+   * @returns
+   */
+  controlHasError(
+    form: FormGroup,
+    controlName: string,
+    validation: string
+  ) {
+    const control = form.controls[controlName];
+    return control.hasError(validation) && (control.dirty || control.touched);
+  }
+
+  /**
    * Check if the FormComponent is required.
    * @param config - FormComponent Config.
    * @returns If is required.

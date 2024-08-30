@@ -1,7 +1,7 @@
 import { ComponentRef, Type } from '@angular/core';
 import { IField } from './ifield';
 import { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
-import { IInputConfig } from './iinput-config';
+import { IFieldOptions } from './ifield-options';
 
 export interface IFieldConfig {
   /**
@@ -33,9 +33,9 @@ export interface IFieldConfig {
    */
   placeholder?: string;
   /**
-   * Style to apply to the field. Example: `background-color: #fff;`
+   * Style to apply to the field. Example: `{ "background-color": "#fff" }`
    */
-  style?: string;
+  style?: object;
   /**
    * Fields order. Field with order 1 goes first that with order 2.
    */
@@ -58,7 +58,7 @@ export interface IFieldConfig {
    * `options: { dpa: true }`.
    */
   // TODO: Update this property to one or more properties with defined attributes to increase code readability.
-  options?: IInputConfig;
+  options?: IFieldOptions;
   /**
    * Represents a component created by a ComponentFactory. Provides access to the component
    * instance and related objects, and provides the means of destroying the instance.

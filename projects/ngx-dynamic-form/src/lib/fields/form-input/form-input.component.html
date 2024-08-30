@@ -17,6 +17,7 @@
                 [ngClass]="{
                     'form-control': true,
                     'is-invalid': formService.isControlInvalid(group, config.name),
+                    'is-valid': formService.isControlValid(group, config.name) && config.options?.validStyle,
                     'text-end': config.fieldType === 'number'
                 }"
                 [formControlName]="config.name"

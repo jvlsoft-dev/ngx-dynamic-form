@@ -6,10 +6,9 @@
 </div>
 
 <ng-template #rowForm>
-    <!-- TODO: Make responsive -->
     <form (submit)="handleSubmit($event)" [formGroup]="form" class="form" errorTailor>
         <div class="form-group row">
-            <div *ngFor="let field of config" [class]="field.class">
+            <div *ngFor="let field of config" [class]="field.class" [ngStyle]="field.style || {}">
                 <ng-container  [config]="field" [group]="form" dynamicField>
                 </ng-container>
             </div>

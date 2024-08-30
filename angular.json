@@ -65,7 +65,8 @@
             "styles": [
               "projects/demo-app/src/styles.sass",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css"
             ],
             "scripts": []
           },
@@ -130,7 +131,8 @@
             "styles": [
               "projects/demo-app/src/styles.sass",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css"
             ],
             "scripts": []
           }

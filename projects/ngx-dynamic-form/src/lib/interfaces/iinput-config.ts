@@ -15,4 +15,8 @@ export interface IInputConfig {
    * step attribute of html input tag.
    */
   step?: number;
+  /**
+   * If is true show the valid style.
+   */
+  validStyle?: boolean;
 }
