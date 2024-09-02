@@ -14,11 +14,4 @@ import { IFieldConfig } from '../../interfaces/ifield-config';
 export class FormCheckboxComponent implements IField {
   config!: IFieldConfig;
   group!: FormGroup<any>;
-
-  /**
-   * Get if the check has a label.
-   */
-  get showLabel() {
-    return this.config.options?.showLabel ?? true;
-  }
 }

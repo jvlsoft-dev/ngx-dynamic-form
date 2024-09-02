@@ -8,12 +8,12 @@ import { IFieldConfig } from '../interfaces/ifield-config';
   standalone: true,
 })
 export class DynamicFieldDirective implements IField {
-  // TODO: Update deprecated methods.
   @Input() config!: IFieldConfig;
   @Input() group!: FormGroup<any>;
   component!: ComponentRef<IField>;
 
   constructor(
+    // TODO: Update deprecated methods.
     private resolver: ComponentFactoryResolver,
     private container: ViewContainerRef
   ) {}

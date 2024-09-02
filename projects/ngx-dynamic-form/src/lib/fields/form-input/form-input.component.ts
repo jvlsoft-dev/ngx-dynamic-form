@@ -6,6 +6,7 @@ import { DestroyComponent } from '../../components/destroy/destroy.component';
 import { CommonModule } from '@angular/common';
 import { FormLabelComponent } from '../../components/form-label/form-label.component';
 import { FormHelperService } from '../../services/form-helper.service';
+import { messages } from '../../constants/lang.es';
 
 @Component({
   selector: 'form-input',
@@ -17,21 +18,10 @@ export class FormInputComponent extends DestroyComponent implements IField {
   config!: IFieldConfig;
   group!: FormGroup<any>;
   type = 'password';
+  requiredField = messages.REQUIRED_FIELD;
 
-  constructor(
-    public formService: FormHelperService,
-  ) {
+  constructor(public formService: FormHelperService) {
     super();
-  }
-
-  /**
-   * Get if the input has a label.
-   */
-  get showLabel() {
-    return (
-      typeof this.config.options?.showLabel === 'undefined' ||
-      !!this.config.options?.showLabel
-    );
   }
 
   /**

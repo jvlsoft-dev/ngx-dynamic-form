@@ -1,9 +1,12 @@
 <div [formGroup]="group">
     <!-- TextArea Label -->
-    <form-label [config]="config"></form-label>
+    <form-label *ngIf="!!config.label" [config]="config"></form-label>
     <!-- TextArea -->
     <textarea [class.is-invalid]="formService.isControlInvalid(group, config.name)" [formControlName]="config.name"
         [id]="config.name" [placeholder]="config.placeholder || ''" [rows]="config.options?.rows || 3"
-        [style]="config.style" class="form-control">
+        class="form-control" [disabled]="config.disabled ?? false" [readOnly]="config.readonly ?? false">
     </textarea>
+    <!-- Helper text -->
+    <span *ngIf="!!config.helperText" [innerHTML]="config.helperText" class="form-text text-muted">
+    </span>
 </div>

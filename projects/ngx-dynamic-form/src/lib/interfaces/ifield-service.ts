@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { IRows } from "./iselect-config";
+import { IRows } from "./ifield-options";
 
 export interface IFieldService {
     /**

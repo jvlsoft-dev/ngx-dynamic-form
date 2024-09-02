@@ -7,7 +7,14 @@
     <p>Here are some examples of how to use the <strong>ngx-dynamic-form</strong> library:</p>
     <pre><code></code></pre>
 
-    <ngx-dynamic-form [config]="inputConfig" [onlyFields]="true" [saveButton]="false"></ngx-dynamic-form>
+    <ngx-dynamic-form [config]="inputsConfig" [onlyFields]="false" title="Inputs Example" [hasPrefix]="false"
+        [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>
+    <hr class="my-3">
+    <ngx-dynamic-form [config]="checksRadiosConfig" [onlyFields]="false" title="Checks and Radios Example"
+        [hasPrefix]="false" [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>
+    <hr class="my-3">
+    <ngx-dynamic-form [config]="selectsConfig" [onlyFields]="false" title="NgSelects Example" [hasPrefix]="false"
+        [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>
 
     <h2 class="my-3">Library API</h2>
     <h3 class="my-3">IFieldConfig</h3>
@@ -86,7 +93,8 @@
                 <td>options</td>
                 <td>IFieldOptions</td>
                 <td>Object with other options, this gives the possibility to add other functionalities. Example: In the
-                    input field label can be hidden: `options: {{'{'}} showLabel: false {{'}'}}`.</td>
+                    input field label can be hidden: `options: {{'{'}} options: ['Java', 'Python', 'JavaScript']
+                    {{'}'}}`.</td>
             </tr>
             <tr>
                 <td>component</td>
@@ -123,11 +131,6 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>showLabel</td>
-                <td>boolean</td>
-                <td>If the input has a label.</td>
-            </tr>
             <tr>
                 <td>staticText</td>
                 <td>string</td>

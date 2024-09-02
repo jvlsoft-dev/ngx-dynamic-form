@@ -1,7 +1,7 @@
 <div *ngIf="!!group.get(config.name)" [formGroup]="group">
     <!-- Top label -->
-    <form-label *ngIf="showLabel" [config]="config"
-        [style]="!!config.options?.firstLabel ? 'padding-left: 40px;': ''"></form-label>
+    <form-label *ngIf="!!config.label" [config]="config"
+        [style]="!!config.options?.firstLabel && (config.options?.hasLabelMargin ?? true) ? 'padding-left: 40px;': ''"></form-label>
     <!-- Check with labels -->
     <div class="d-flex align-items-center">
         <label *ngIf="!!config.options?.firstLabel" class="me-2" style="margin-bottom: .125rem">{{config.options?.firstLabel}}
@@ -13,6 +13,6 @@
         </div>
     </div>
     <!-- Helper text -->
-    <p *ngIf="!!config.helperText" [innerHTML]="config.helperText" class="form-text text-muted">
-    </p>
+    <span *ngIf="!!config.helperText" [innerHTML]="config.helperText" class="form-text text-muted">
+    </span>
 </div>

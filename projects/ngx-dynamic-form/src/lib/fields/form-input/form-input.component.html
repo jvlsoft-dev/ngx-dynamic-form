@@ -1,5 +1,5 @@
 <div [hidden]="config.fieldType === 'hidden'" [formGroup]="group">
-        <form-label *ngIf="showLabel" [config]="config"></form-label>
+        <form-label *ngIf="!!config.label" [config]="config"></form-label>
         <div>
             <!-- Static text -->
             <div *ngIf="!!config.options?.staticText">

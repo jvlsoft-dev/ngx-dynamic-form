@@ -54,8 +54,8 @@ export interface IFieldConfig {
   value?: any;
   /**
    * Object with other options, this give the possibility to add other functionalities.
-   * Example: In the input field label can be hidden:
-   * `options: { showLabel: false }`.
+   * Example: In the radio field the options can be defined:
+   * `options: { options: ['Java', 'Python', 'JavaScript'] }`.
    */
   options?: IFieldOptions;
   /**
