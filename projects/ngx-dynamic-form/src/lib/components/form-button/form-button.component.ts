@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { messages } from '../../constants/lang.es';
 
 @Component({
   selector: 'form-button',
@@ -9,8 +10,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule],
 })
 export class FormButtonComponent {
-  // TODO: Change strings for constants.
-  @Input() label: string = 'Guardar';
+  @Input() label: string = messages.SAVE;
   @Input() group!: FormGroup;
   @Input() isLoading: boolean = true;
 }

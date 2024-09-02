@@ -1,7 +1,12 @@
 import { EventEmitter } from "@angular/core";
 import { Observable } from "rxjs";
+import { IFieldService } from "./ifield-service";
 
 export interface ISelectConfig {
+  /**
+   * Service to get the items from the database.
+   */
+  itemService?: IFieldService
   /**
    * Used for scrolling, searching on the server, and handling complex functions.
    * If the data is simple, set dynamic to false.

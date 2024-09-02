@@ -1,0 +1,9 @@
+<div [formGroup]="group">
+    <!-- TextArea Label -->
+    <form-label [config]="config"></form-label>
+    <!-- TextArea -->
+    <textarea [class.is-invalid]="formService.isControlInvalid(group, config.name)" [formControlName]="config.name"
+        [id]="config.name" [placeholder]="config.placeholder || ''" [rows]="config.options?.rows || 3"
+        [style]="config.style" class="form-control">
+    </textarea>
+</div>

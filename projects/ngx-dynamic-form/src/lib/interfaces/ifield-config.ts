@@ -54,10 +54,9 @@ export interface IFieldConfig {
   value?: any;
   /**
    * Object with other options, this give the possibility to add other functionalities.
-   * Example: In the municipality component can be enable dpa with:
-   * `options: { dpa: true }`.
+   * Example: In the input field label can be hidden:
+   * `options: { showLabel: false }`.
    */
-  // TODO: Update this property to one or more properties with defined attributes to increase code readability.
   options?: IFieldOptions;
   /**
    * Represents a component created by a ComponentFactory. Provides access to the component

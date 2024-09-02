@@ -17,6 +17,8 @@ import {
   BehaviorSubject,
   Subject,
 } from 'rxjs';
+import { unionWith, isEqual } from 'lodash'
+import { messages } from '../../constants/lang.es';
 
 @Component({
   selector: 'form-select',
@@ -33,6 +35,7 @@ export class FormSelectComponent extends DestroyComponent implements IField {
   config!: IFieldConfig;
   group!: FormGroup<any>;
   maxNumber = Number.MAX_SAFE_INTEGER;
+  requiredField = messages.REQUIRED_FIELD
   skipSelect: number = 0;
   input$ = new Subject<string>();
   loading$ = new BehaviorSubject(false);
@@ -107,32 +110,45 @@ export class FormSelectComponent extends DestroyComponent implements IField {
       Object.assign(query, this.config.options.filter);
     }
 
-    // Search if the method exists.
+    // Search.
+    this.loading$.next(true);
+    return this.getMethod(query)
+      .pipe(
+        takeUntil(this.destroy$),
+        finalize(() => this.loading$.next(false)),
+        map((data) =>
+          !this.config.options?.transformData
+            ? data.rows
+            : this.config.options.transformData(data.rows)
+        )
+      )
+      .subscribe((items) => {
+        this.items = !this.items?.length
+          ? items
+          : unionWith(this.items, items, isEqual);
+        this._cdr.detectChanges();
+      });
+  }
+
+  /**
+   * Get to the method that returns the items.
+   * @param query - Query options.
+   */
+  getMethod(query: any) {
     if (!!this.config.options?.method) {
-      this.loading$.next(true);
-      return this.config.options
-        .method(
-          query,
-          this.skipSelect,
-          !!this.config.options.dynamic
-            ? this.config.options.limit ?? 20
-            : Number.MAX_SAFE_INTEGER
-        )
-        .pipe(
-          takeUntil(this.destroy$),
-          finalize(() => this.loading$.next(false)),
-          map((data) =>
-            !this.config.options?.transformData
-              ? data.rows
-              : this.config.options.transformData(data.rows)
-          )
-        )
-        .subscribe((items) => {
-          this.items = [...this.items, ...items];
-          this._cdr.detectChanges();
-        });
+      return this.config.options.method(
+        query,
+        this.skipSelect,
+        this.config.options.limit || 20
+      );
     }
-    // TODO: Lang constants.
-    throw new Error('Method not exists');
+    if (!!this.config.options?.itemService) {
+      return this.config.options.itemService.all(
+        query,
+        this.skipSelect,
+        this.config.options.limit || 20
+      );
+    }
+    throw new Error(messages.UNDEFINED_METHOD_OR_SERVICE);
   }
 }

@@ -7,7 +7,6 @@ import {
   Output,
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FormInputComponent } from './fields/form-input/form-input.component';
 import { IFieldConfig } from './interfaces/ifield-config';
 import { FormHelperService } from './services/form-helper.service';
@@ -26,8 +25,6 @@ import { FormHeaderComponent } from './components/form-header/form-header.compon
     DynamicFieldDirective,
     FormButtonComponent,
     FormHeaderComponent,
-    // TODO: Resolve ActivatedRoute bug
-    // RouterModule,
   ],
 })
 export class DynamicFormComponent implements OnInit {
@@ -55,6 +52,10 @@ export class DynamicFormComponent implements OnInit {
    * If the form has a button to save. Default true.
    */
   @Input() saveButton: boolean = true;
+  /**
+   * Id of the element to edit.
+   */
+  @Input() id?: string | number;
   @Input() form!: FormGroup;
   @Output() save: EventEmitter<any> = new EventEmitter<any>();
   isLoading: boolean = false;
@@ -62,9 +63,7 @@ export class DynamicFormComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     public _formService: FormHelperService,
-    private _cdr: ChangeDetectorRef,
-    // TODO: Resolve ActivatedRoute bug
-    // private _route: ActivatedRoute
+    private _cdr: ChangeDetectorRef
   ) {}
 
   get value() {
@@ -80,13 +79,8 @@ export class DynamicFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Get id for the route
-    // TODO: Resolve ActivatedRoute bug
-    // const id = this._route.snapshot.params['id'];
-    const id = 0;
-    // Set title form.
     this.title =
-      (!!this.hasPrefix ? (!!id ? 'Editar ' : 'Crear ') : '') + this.title;
+      (!!this.hasPrefix ? (!!this.id ? 'Editar ' : 'Crear ') : '') + this.title;
     // Build form if is not define.
     this.form = this.form || this.createGroup();
   }

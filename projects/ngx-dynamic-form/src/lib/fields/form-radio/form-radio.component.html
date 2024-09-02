@@ -1,0 +1,13 @@
+<div *ngIf="!!group.get(config.name)" [formGroup]="group">
+    <!-- Label -->
+    <form-label [config]="config"></form-label>
+    <!-- Radio options -->
+    <div *ngFor="let option of config.options?.options" [class]="config.options?.class + ' form-check'">
+        <!-- Radio label -->
+        <label  class="form-check-label">
+            <input [formControlName]="config.name" [name]="config.name" [value]="option" type="radio" class="form-check-input"/>
+            <span></span>
+            {{ option }}
+        </label>
+    </div>
+</div>

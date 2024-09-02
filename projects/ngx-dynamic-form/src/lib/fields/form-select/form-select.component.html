@@ -46,8 +46,7 @@
             <!-- Required validation -->
             <div *ngIf="!(formService.isSubmitted$ | async) && formService.controlHasError(group, config.name, 'required')"
                 class="invalid-feedback">
-                <!-- TODO: Language constants -->
-                Este campo es requerido
+                {{ requiredField }}
             </div>
             <span *ngIf="!!config.helperText" [innerHTML]="config.helperText" class="form-text text-muted">
             </span>
