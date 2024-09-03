@@ -10,6 +10,14 @@ To install the library, run:
 npm install ngx-dynamic-form
 ```
 
+Then add the following styles:
+
+```scss
+@import "~node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~node_modules/@fortawesome/fontawesome-free/css/all.css";
+@import "~node_modules/@ng-select/ng-select/themes/default.theme.css";
+```
+
 ## Usage
 
 Here's a basic example of how to use the library in your Angular project:
