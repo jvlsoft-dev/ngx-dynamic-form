@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { of } from 'rxjs';
 import { DemoService } from './services/demo.service';
 import {
   FormCheckboxComponent,
@@ -11,6 +10,7 @@ import {
   ICheckboxConfig,
   IFieldConfig,
   IRadioConfig,
+  ISelectConfig,
 } from 'projects/ngx-dynamic-form/src/public-api';
 
 @Component({
@@ -21,6 +21,7 @@ import {
 export class AppComponent {
   constructor(private _demoService: DemoService) {}
   inputsConfig: IFieldConfig[] = [
+    // Text input.
     {
       type: FormInputComponent,
       name: 'username',
@@ -30,6 +31,7 @@ export class AppComponent {
       placeholder: 'John',
       validation: [Validators.required],
     },
+    // Email input.
     {
       type: FormInputComponent,
       name: 'email',
@@ -39,6 +41,7 @@ export class AppComponent {
       placeholder: 'email@dominium',
       validation: [Validators.required],
     },
+    // Password input.
     {
       type: FormInputComponent,
       name: 'password',
@@ -49,6 +52,7 @@ export class AppComponent {
       fieldType: 'password',
       validation: [Validators.required],
     },
+    // Number input.
     {
       type: FormInputComponent,
       name: 'workerId',
@@ -58,6 +62,7 @@ export class AppComponent {
       placeholder: 'XXXX XXXX XXXX',
       fieldType: 'number',
     },
+    // Date input.
     {
       type: FormInputComponent,
       name: 'birthday',
@@ -67,6 +72,7 @@ export class AppComponent {
       placeholder: 'mm/dd/yyyy',
       fieldType: 'date',
     },
+    // File input.
     {
       type: FormInputComponent,
       name: 'photo',
@@ -75,6 +81,7 @@ export class AppComponent {
       label: 'Photo',
       fieldType: 'file',
     },
+    // Textarea input.
     {
       type: FormTextAreaComponent,
       name: 'description',
@@ -84,6 +91,7 @@ export class AppComponent {
     },
   ];
   checksRadiosConfig: IFieldConfig[] = [
+    // Double check.
     {
       type: FormCheckboxComponent,
       name: 'first',
@@ -107,6 +115,7 @@ export class AppComponent {
         hasLabelMargin: false,
       } as ICheckboxConfig,
     },
+    // Simple check.
     {
       type: FormCheckboxComponent,
       name: 'third',
@@ -124,6 +133,7 @@ export class AppComponent {
         lastLabel: 'Too many questions?',
       } as ICheckboxConfig,
     },
+    // Radio example.
     {
       type: FormRadioComponent,
       name: 'radioOne',
@@ -131,12 +141,7 @@ export class AppComponent {
       label: 'Best programming language for the web',
       value: 'TypeScript',
       options: {
-        options: [
-          'Java',
-          'JavaScript',
-          'TypeScript',
-          'Other'
-        ]
+        options: ['Java', 'JavaScript', 'TypeScript', 'Other'],
       } as IRadioConfig,
     },
     {
@@ -146,28 +151,18 @@ export class AppComponent {
       label: 'Best programming language for android development',
       options: {
         checked: 'Java',
-        options: [
-          'Kotlin',
-          'Java',
-          'Python',
-          'Other'
-        ]
+        options: ['Kotlin', 'Java', 'Python', 'Other'],
       } as IRadioConfig,
     },
-    
   ];
   selectsConfig: IFieldConfig[] = [
+    // Simple Select.
     {
       type: FormSelectComponent,
-      name: 'select',
-      class: 'col-6',
-      label: 'Topic',
-      helperText: 'This is an helper text.',
-      placeholder: 'Text example',
-      style: { padding: '10px' },
-      disabled: false,
-      readonly: false,
-      validation: [Validators.required],
+      name: 'simpleSelect',
+      class: 'col-md-6 col-sm-12',
+      label: 'Simple select',
+      helperText: 'You can select one item',
       options: {
         limit: 10,
         itemService: this._demoService,
@@ -175,39 +170,41 @@ export class AppComponent {
         dynamic: true,
         bindValue: 'name',
         bindLabel: 'name',
-      },
+        searchable: false,
+      } as ISelectConfig,
+    },
+    // Multiple Select.
+    {
+      type: FormSelectComponent,
+      name: 'multipleSelect',
+      class: 'col-md-6 col-sm-12',
+      label: 'Multiple select',
+      helperText: 'You can select several items',
+      options: {
+        multiple: true,
+        limit: 10,
+        itemService: this._demoService,
+        autoLoadItems: true,
+        dynamic: true,
+        bindValue: 'name',
+        bindLabel: 'name',
+        searchable: false,
+      } as ISelectConfig,
+    },
+    // Search Select.
+    {
+      type: FormSelectComponent,
+      name: 'searchSelect',
+      class: 'col-md-6 col-sm-12',
+      label: 'Search select',
+      helperText: 'You can search the items',
+      options: {
+        limit: 10,
+        itemService: this._demoService,
+        dynamic: true,
+        bindValue: 'name',
+        bindLabel: 'name',
+      } as ISelectConfig,
     },
   ];
-
-  /**
-   * Demo method to test FormSelectComponent.
-   */
-  demoMethod(query?: any, skip?: number, limit?: number) {
-    const data = [
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7',
-      '8',
-      '9',
-      '10',
-      '11',
-      '12',
-    ];
-    let count = 0;
-    const rows = {
-      rows: [
-        ...data.filter(
-          (e, i) =>
-            (!!query?.search ? e == query.search : true) &&
-            (!!skip ? skip <= i : true) &&
-            (!!limit ? ++count <= limit : ++count <= 10)
-        ),
-      ],
-    };
-    return of(rows);
-  }
 }

@@ -120,6 +120,7 @@
             </tr>
         </tbody>
     </table>
+
     <h3 class="my-3">IInputConfig</h3>
     <p>The IInputConfig has the following attributes:</p>
     <table class="table table-bordered table-hover">
@@ -153,6 +154,7 @@
             </tr>
         </tbody>
     </table>
+
     <h3 class="my-3">ICheckboxConfig</h3>
     <p>The ICheckboxConfig has the following attributes:</p>
     <table class="table table-bordered table-hover">
@@ -174,8 +176,14 @@
                 <td>string</td>
                 <td>Checkbox last label.</td>
             </tr>
+            <tr>
+                <td>hasLabelMargin</td>
+                <td>boolean</td>
+                <td>Is true if the label has a left margin.</td>
+            </tr>
         </tbody>
     </table>
+
     <h3 class="my-3">IRadioConfig</h3>
     <p>The IRadioConfig has the following attributes:</p>
     <table class="table table-bordered table-hover">
@@ -204,24 +212,7 @@
             </tr>
         </tbody>
     </table>
-    <h3 class="my-3">ITextAreaConfig</h3>
-    <p>The ITextAreaConfig has the following attributes:</p>
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>rows</td>
-                <td>number</td>
-                <td>Textarea rows number.</td>
-            </tr>
-        </tbody>
-    </table>
+
     <h3 class="my-3">ISelectConfig</h3>
     <p>The ISelectConfig has the following attributes:</p>
     <table class="table table-bordered table-hover">
@@ -241,7 +232,8 @@
             <tr>
                 <td>dynamic</td>
                 <td>boolean</td>
-                <td>Used for scrolling, searching on the server, and handling complex functions.</td>
+                <td>Used for scrolling, searching on the server, and handling complex functions. If the data is simple,
+                    set dynamic to false.</td>
             </tr>
             <tr>
                 <td>loading</td>
@@ -294,10 +286,52 @@
                 <td>The property to group items by.</td>
             </tr>
             <tr>
-                <td>bindColor</td>
-                <td>string</td>
-                <td>The property to bind as the color for each item.</td>
+                <td>limit</td>
+                <td>number</td>
+                <td>The maximum number of items per query.</td>
+            </tr>
+            <tr>
+                <td>maxSelectedItems</td>
+                <td>number</td>
+                <td>The maximum number of items that can be selected.</td>
+            </tr>
+            <tr>
+                <td>method</td>
+                <td>(query: any, skip: number, limit: number) => Observable&lt;IRows&gt;
+                </td>
+                <td>The method to fetch rows, returning an observable.</td>
+            </tr>
+            <tr>
+                <td>onChange</td>
+                <td>EventEmitter&lt;any&gt;
+                </td>
+                <td>Event emitter for change events.</td>
+            </tr>
+            <tr>
+                <td>transformData</td>
+                <td>(data: any) => any[]</td>
+                <td>Function to transform the data before displaying it.</td>
             </tr>
         </tbody>
     </table>
+
+    <h3 class="my-3">ITextAreaConfig</h3>
+    <p>The ITextAreaConfig has the following attributes:</p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>rows</td>
+                <td>number</td>
+                <td>Textarea rows number.</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

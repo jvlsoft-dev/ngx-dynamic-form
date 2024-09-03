@@ -28,20 +28,6 @@
                 [virtualScroll]="config.options?.dynamic ?? false" 
                 appendTo=".select">
 
-                <ng-template [ngIf]="config.options?.color">
-                    <ng-template let-item="item" ng-label-tmp>
-                        <div [ngStyle]="{'background': item}" class="circle-div"></div>
-                    </ng-template>
-                </ng-template>
-
-                <ng-template let-item="item" ng-option-tmp>
-                    <div *ngIf="config.options?.color" [ngStyle]="{'background': item}" class="circle-div"></div>
-                    <div *ngIf="!config.options?.color"
-                        [ngStyle]="{'color': item[config.options?.bindColor || 'color']}" style="white-space: normal">
-                        {{item[config.options?.bindLabel || 'name'] || item}}
-                    </div>
-                </ng-template>
-
             </ng-select>
             <!-- Required validation -->
             <div *ngIf="!(formService.isSubmitted$ | async) && formService.controlHasError(group, config.name, 'required')"

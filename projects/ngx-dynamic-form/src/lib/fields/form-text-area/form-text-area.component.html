@@ -4,7 +4,7 @@
     <!-- TextArea -->
     <textarea [class.is-invalid]="formService.isControlInvalid(group, config.name)" [formControlName]="config.name"
         [id]="config.name" [placeholder]="config.placeholder || ''" [rows]="config.options?.rows || 3"
-        class="form-control" [disabled]="config.disabled ?? false" [readOnly]="config.readonly ?? false">
+        class="form-control" [readOnly]="config.readonly ?? false">
     </textarea>
     <!-- Helper text -->
     <span *ngIf="!!config.helperText" [innerHTML]="config.helperText" class="form-text text-muted">

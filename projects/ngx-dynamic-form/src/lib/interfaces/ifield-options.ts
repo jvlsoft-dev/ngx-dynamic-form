@@ -113,14 +113,6 @@ export interface ISelectConfig {
    */
   groupBy?: string;
   /**
-   * The property to bind as the color for each item.
-   */
-  bindColor?: string;
-  /**
-   * The color to be used for the items.
-   */
-  color?: string;
-  /**
    * The maximum number of items per query.
    */
   limit?: number;
