@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-end">
+    <!-- Button -->
+    <button [disabled]="isLoading" class="btn btn-primary" type="submit">
+        {{ label }}
+        <!-- Spinner -->
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    </button>
+</div>

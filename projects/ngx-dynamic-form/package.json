@@ -1,0 +1,17 @@
+{
+  "name": "ngx-dynamic-form",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@fortawesome/fontawesome-free": "^6.6.0",
+    "@ng-select/ng-select": "11.x",
+    "@types/lodash": "^4.17.7",
+    "bootstrap": "^5.3.3",
+    "lodash": "^4.17.21"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

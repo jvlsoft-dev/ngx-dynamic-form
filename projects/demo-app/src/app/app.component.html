@@ -1,0 +1,336 @@
+<div class="container">
+    <h1 class="my-3">ngx-dynamic-form</h1>
+    <p>The <strong>ngx-dynamic-form</strong> is a library that works in Angular 16 with Bootstrap 5 and fontawesome-free
+        to generate forms in a simple and dynamic way.</p>
+
+    <h2 class="my-3">Usage Examples</h2>
+    <p>Here are some examples of how to use the <strong>ngx-dynamic-form</strong> library:</p>
+    <pre><code></code></pre>
+
+    <ngx-dynamic-form [config]="inputsConfig" [onlyFields]="false" title="Inputs Example" [hasPrefix]="false"
+        [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>
+    <hr class="my-3">
+    <ngx-dynamic-form [config]="checksRadiosConfig" [onlyFields]="false" title="Checks and Radios Example"
+        [hasPrefix]="false" [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>
+    <hr class="my-3">
+    <ngx-dynamic-form [config]="selectsConfig" [onlyFields]="false" title="NgSelects Example" [hasPrefix]="false"
+        [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>
+
+    <h2 class="my-3">Library API</h2>
+    <h3 class="my-3">IFieldConfig</h3>
+    <p>The IFieldConfig has the following attributes:</p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>type</td>
+                <td>Type&lt;IField&gt;
+                </td>
+                <td>Type of HTML field.</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>string</td>
+                <td>Field name, this name will be the `FormControlName`. Example: 'name', 'email', etc.</td>
+            </tr>
+            <tr>
+                <td>class</td>
+                <td>string</td>
+                <td>Class to apply to the field. Example: `col-lg-4`.</td>
+            </tr>
+            <tr>
+                <td>label</td>
+                <td>string</td>
+                <td>Component label.</td>
+            </tr>
+            <tr>
+                <td>helperText</td>
+                <td>string</td>
+                <td>Text to display below the field.</td>
+            </tr>
+            <tr>
+                <td>fieldType</td>
+                <td>string</td>
+                <td>HTML type attribute of the field. Example: 'text', 'password', 'email', 'submit', etc.</td>
+            </tr>
+            <tr>
+                <td>placeholder</td>
+                <td>string</td>
+                <td>Field placeholder.</td>
+            </tr>
+            <tr>
+                <td>style</td>
+                <td>object</td>
+                <td>Style to apply to the field. Example: `{{'{'}} "background-color": "#fff" {{'}'}}`.</td>
+            </tr>
+            <tr>
+                <td>order</td>
+                <td>number</td>
+                <td>Fields order. Field with order 1 goes first that with order 2.</td>
+            </tr>
+            <tr>
+                <td>disabled</td>
+                <td>boolean</td>
+                <td>If the field will be disabled.</td>
+            </tr>
+            <tr>
+                <td>readonly</td>
+                <td>boolean</td>
+                <td>If the field is readonly.</td>
+            </tr>
+            <tr>
+                <td>value</td>
+                <td>any</td>
+                <td>Default value.</td>
+            </tr>
+            <tr>
+                <td>options</td>
+                <td>IFieldOptions</td>
+                <td>Object with other options, this gives the possibility to add other functionalities. Example: In the radio field the options can be defined: `options: {{'{'}} options: ['Java', 'Python', 'JavaScript']
+                    {{'}'}}`.</td>
+            </tr>
+            <tr>
+                <td>component</td>
+                <td>ComponentRef&lt;any&gt;
+                </td>
+                <td>Represents a component created by a ComponentFactory. Provides access to the component instance and
+                    related objects, and provides the means of destroying the instance.</td>
+            </tr>
+            <tr>
+                <td>validation</td>
+                <td>ValidatorFn[]</td>
+                <td>Array of ValidatorFn.</td>
+            </tr>
+            <tr>
+                <td>asyncValidators</td>
+                <td>AsyncValidatorFn | AsyncValidatorFn[]</td>
+                <td>It accepts an AsyncValidatorFn or AsyncValidatorFn[] for async validator in reactive forms.</td>
+            </tr>
+            <tr>
+                <td>updateOn</td>
+                <td>'change' | 'blur' | 'submit'</td>
+                <td>The event name for control to update upon.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="my-3">IInputConfig</h3>
+    <p>The IInputConfig has the following attributes:</p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>staticText</td>
+                <td>string</td>
+                <td>A text to display above the field.</td>
+            </tr>
+            <tr>
+                <td>min</td>
+                <td>number</td>
+                <td>min attribute of html input tag.</td>
+            </tr>
+            <tr>
+                <td>step</td>
+                <td>number</td>
+                <td>step attribute of html input tag.</td>
+            </tr>
+            <tr>
+                <td>validStyle</td>
+                <td>boolean</td>
+                <td>If is true show the valid style.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="my-3">ICheckboxConfig</h3>
+    <p>The ICheckboxConfig has the following attributes:</p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>firstLabel</td>
+                <td>string</td>
+                <td>Checkbox first label.</td>
+            </tr>
+            <tr>
+                <td>lastLabel</td>
+                <td>string</td>
+                <td>Checkbox last label.</td>
+            </tr>
+            <tr>
+                <td>hasLabelMargin</td>
+                <td>boolean</td>
+                <td>Is true if the label has a left margin.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="my-3">IRadioConfig</h3>
+    <p>The IRadioConfig has the following attributes:</p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>class</td>
+                <td>string</td>
+                <td>Class to apply to options.</td>
+            </tr>
+            <tr>
+                <td>options</td>
+                <td>any[]</td>
+                <td>Radio options.</td>
+            </tr>
+            <tr>
+                <td>checked</td>
+                <td>any</td>
+                <td>The checked element.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="my-3">ISelectConfig</h3>
+    <p>The ISelectConfig has the following attributes:</p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>itemService</td>
+                <td>IFieldService</td>
+                <td>Service to get the items from the database.</td>
+            </tr>
+            <tr>
+                <td>dynamic</td>
+                <td>boolean</td>
+                <td>Used for scrolling, searching on the server, and handling complex functions. If the data is simple,
+                    set dynamic to false.</td>
+            </tr>
+            <tr>
+                <td>loading</td>
+                <td>boolean</td>
+                <td>Indicates if the component is in a loading state.</td>
+            </tr>
+            <tr>
+                <td>autoLoadItems</td>
+                <td>boolean</td>
+                <td>If true, items will be automatically loaded.</td>
+            </tr>
+            <tr>
+                <td>multiple</td>
+                <td>boolean</td>
+                <td>If true, multiple items can be selected.</td>
+            </tr>
+            <tr>
+                <td>clearable</td>
+                <td>boolean</td>
+                <td>If true, the selected item can be cleared.</td>
+            </tr>
+            <tr>
+                <td>searchable</td>
+                <td>boolean</td>
+                <td>If true, the select component will be searchable.</td>
+            </tr>
+            <tr>
+                <td>filter</td>
+                <td>{{'{'}} [key: string]: string | string[] | number | number[] | boolean {{'}'}}</td>
+                <td>Filter to use on the service search query.</td>
+            </tr>
+            <tr>
+                <td>items</td>
+                <td>[...[], ...any]</td>
+                <td>Items to be displayed in the select component.</td>
+            </tr>
+            <tr>
+                <td>bindLabel</td>
+                <td>string</td>
+                <td>The property to bind as the label for each item.</td>
+            </tr>
+            <tr>
+                <td>bindValue</td>
+                <td>string</td>
+                <td>The property to bind as the value for each item.</td>
+            </tr>
+            <tr>
+                <td>groupBy</td>
+                <td>string</td>
+                <td>The property to group items by.</td>
+            </tr>
+            <tr>
+                <td>limit</td>
+                <td>number</td>
+                <td>The maximum number of items per query.</td>
+            </tr>
+            <tr>
+                <td>maxSelectedItems</td>
+                <td>number</td>
+                <td>The maximum number of items that can be selected.</td>
+            </tr>
+            <tr>
+                <td>method</td>
+                <td>(query: any, skip: number, limit: number) => Observable&lt;IRows&gt;
+                </td>
+                <td>The method to fetch rows, returning an observable.</td>
+            </tr>
+            <tr>
+                <td>onChange</td>
+                <td>EventEmitter&lt;any&gt;
+                </td>
+                <td>Event emitter for change events.</td>
+            </tr>
+            <tr>
+                <td>transformData</td>
+                <td>(data: any) => any[]</td>
+                <td>Function to transform the data before displaying it.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="my-3">ITextAreaConfig</h3>
+    <p>The ITextAreaConfig has the following attributes:</p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>rows</td>
+                <td>number</td>
+                <td>Textarea rows number.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

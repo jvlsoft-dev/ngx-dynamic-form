@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-between align-items-center">
+    <!-- Title -->
+    <div class="card-title mb-0">
+        <h3 class="card-label mb-0">{{ title }}</h3>
+    </div>
+    <!-- Go back button -->
+    <div *ngIf="canGoBack" class="card-toolbar">
+        <button (click)="goBack()" class="btn btn-light" type="button">
+            <i class="fa fa-arrow-left me-2"></i>Atrás
+        </button>
+    </div>
+</div>

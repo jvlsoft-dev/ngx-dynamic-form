@@ -1,0 +1,39 @@
+<div [hidden]="config.fieldType === 'hidden'" [formGroup]="group">
+        <form-label *ngIf="!!config.label" [config]="config"></form-label>
+        <div>
+            <!-- Static text -->
+            <div *ngIf="!!config.options?.staticText">
+                {{config.options?.staticText}}
+            </div>
+            <ng-container [ngTemplateOutlet]="input"></ng-container>
+            <!-- Helper text -->
+            <span *ngIf="!!config.helperText" [innerHTML]="config.helperText" class="form-text text-muted">
+            </span>
+        </div>
+    <ng-template #input>
+        <div id="inputDiv" class="d-flex align-items-center">
+            <!-- Input -->
+            <input
+                [ngClass]="{
+                    'form-control': true,
+                    'is-invalid': formService.isControlInvalid(group, config.name),
+                    'is-valid': formService.isControlValid(group, config.name) && config.options?.validStyle,
+                    'text-end': config.fieldType === 'number'
+                }"
+                [formControlName]="config.name"
+                [id]="config.name"
+                [min]="config.options?.min"
+                [step]="config.options?.step"
+                [placeholder]="config.placeholder || ''"
+                [readOnly]="config.readonly ?? !!config.readonly"
+                [type]="config.fieldType === 'password' ? type : config.fieldType || 'text'"
+            />
+            <!-- Eye Icon -->
+            <span *ngIf="config.fieldType === 'password' && !!group.get(config.name)?.value" style="margin-left: -30px;">
+                <i (click)="togglePassword()" [ngClass]="type === 'password' ? 'fas fa-eye': 'fas fa-eye-slash'"
+                    style="cursor: pointer">
+                </i>
+            </span>
+        </div>
+    </ng-template>
+</div>

@@ -2,21 +2,12 @@
 
 The `ngx-dynamic-form` is a library that works in Angular 16 with Bootstrap 5 and FontAwesome to generate forms in a simple and dynamic way.
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Building the Project](#building-the-project)
-- [Running Tests](#running-tests)
-- [Running the Project](#running-the-project)
-- [Usage](#usage)
-- [API](#api)
-
 ## Installation
 
 To install the library, run:
 
 ```bash
-yarn add ngx-dynamic-form
+npm install ngx-dynamic-form
 ```
 
 Then add the following styles:
@@ -26,32 +17,6 @@ Then add the following styles:
 @import "~node_modules/@fortawesome/fontawesome-free/css/all.css";
 @import "~node_modules/@ng-select/ng-select/themes/default.theme.css";
 ```
-
-## Building the Project
-
-To build the project, run:
-
-```bash
-yarn run build ngx-dynamic-form
-```
-
-## Running Tests
-
-To execute the unit tests via [Karma](https://karma-runner.github.io), run:
-
-```bash
-yarn run test ngx-dynamic-form
-```
-
-## Running the Project
-
-To serve the project locally, run:
-
-```bash
-yarn run start demo-app
-```
-
-Then navigate to `http://localhost:4200/` in your browser.
 
 ## Usage
 

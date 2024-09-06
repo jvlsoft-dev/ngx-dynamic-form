@@ -1,0 +1,42 @@
+<div *ngIf="!!group.get(config.name)" [formGroup]="group" [hidden]="config.fieldType === 'hidden'">
+    <div class="row">
+        <div id="ngSelect" >
+            <!-- Label -->
+            <form-label *ngIf="!!config.label" [config]="config"></form-label>
+            <!-- Select -->
+            <ng-select #selectItem class="select"
+                (change)="config.options?.onChange?.emit(selectItem.selectedValues)"
+                (scrollToEnd)="onScroll(selectItem.searchTerm)" 
+                (search)="onSearch()"
+                [bindLabel]="config.options?.bindLabel || 'name'" 
+                [bindValue]="config.options?.bindValue || 'id'"
+                [ngClass]="{
+                           'is-invalid': formService.isControlInvalid(group, config.name),
+                           'is-valid': formService.isControlValid(group, config.name),
+                       }" 
+                [clearable]="config.options?.clearable ?? true" 
+                [formControlName]="config.name"
+                [groupBy]="config.options?.groupBy || ''" 
+                [items]="items || []"
+                [loading]="(loading$ | async) ?? false" 
+                [maxSelectedItems]="config.options?.maxSelectedItems || maxNumber"
+                [multiple]="!!config.options?.multiple" 
+                [placeholder]="config.placeholder || ''"
+                [readonly]="config.readonly ?? false" 
+                [searchable]="config.options?.searchable ?? true"
+                [typeahead]="input$" 
+                [virtualScroll]="config.options?.dynamic ?? false" 
+                appendTo=".select">
+
+            </ng-select>
+            <!-- Required validation -->
+            <div *ngIf="!(formService.isSubmitted$ | async) && formService.controlHasError(group, config.name, 'required')"
+                class="invalid-feedback">
+                {{ requiredField }}
+            </div>
+            <!-- Helper text -->
+            <span *ngIf="!!config.helperText" [innerHTML]="config.helperText" class="form-text text-muted">
+            </span>
+        </div>
+    </div>
+</div>
