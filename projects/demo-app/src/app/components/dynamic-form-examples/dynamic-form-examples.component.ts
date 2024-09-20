@@ -215,4 +215,11 @@ export class DynamicFormExamplesComponent {
   goTo(url: string) {
     this._router.navigateByUrl(url)
   }
+  /**
+   * Get the persons from DemoService
+   * @returns The persons
+   */
+  getPersons() {
+    return this._demoService.data
+  }
 }

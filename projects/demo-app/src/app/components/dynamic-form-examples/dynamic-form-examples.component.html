@@ -17,9 +17,15 @@
         [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>
 
     <h3 class="my-3">Generic Add Examples</h3>
-    <div class="d-flex justify-content-center">
-        <button class="m-3 btn btn-primary" (click)="goTo('person')"><i class="fa fa-plus" ></i> Create Example</button>
-        <button class="m-3 btn btn-primary" (click)="goTo('person/2')"><i class="fa fa-edit" ></i> Edit Example</button>
+    <div class="d-flex justify-content-center flex-column align-items-center">
+        <div>
+            <button class="m-3 btn btn-primary" (click)="goTo('person')"><i class="fa fa-plus"></i> Create Example</button>
+            <button class="m-3 btn btn-primary" (click)="goTo('person/' + (person.value || 1))"><i class="fa fa-edit"></i> Edit Example</button>
+        </div>
+        <select class="form-select" #person multiple aria-label="multiple select example" [ngStyle]="{'max-width': '400px'}">
+            <option *ngFor="let item of getPersons()" [value]="item.id" class="mx-3">{{ item.name }}, age {{item.age}}{{item.color ?
+                ', favorite color: ' + item.color:''}}</option>
+        </select>
     </div>
     <h2 class="my-3">Library API</h2>
     <h3 class="my-3">IFieldConfig</h3>
