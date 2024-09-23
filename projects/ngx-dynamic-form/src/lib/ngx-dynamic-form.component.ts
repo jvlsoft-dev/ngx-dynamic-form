@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { DynamicFieldDirective } from './directives/dynamic-field.directive';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormHeaderComponent } from './components/form-header/form-header.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ngx-dynamic-form',
@@ -52,10 +53,6 @@ export class DynamicFormComponent implements OnInit {
    * If the form has a button to save. Default true.
    */
   @Input() saveButton: boolean = true;
-  /**
-   * Id of the element to edit.
-   */
-  @Input() id?: string | number;
   @Input() form!: FormGroup;
   @Output() save: EventEmitter<any> = new EventEmitter<any>();
   isLoading: boolean = false;
@@ -63,7 +60,8 @@ export class DynamicFormComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     public _formService: FormHelperService,
-    private _cdr: ChangeDetectorRef
+    private _cdr: ChangeDetectorRef,
+    private _route: ActivatedRoute
   ) {}
 
   get value() {
@@ -79,8 +77,9 @@ export class DynamicFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    const id = this._route.snapshot.params['id'];
     this.title =
-      (!!this.hasPrefix ? (!!this.id ? 'Editar ' : 'Crear ') : '') + this.title;
+      (!!this.hasPrefix ? (!!id ? 'Editar ' : 'Crear ') : '') + this.title;
     // Build form if is not define.
     this.form = this.form || this.createGroup();
   }
