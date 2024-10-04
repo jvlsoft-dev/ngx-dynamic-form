@@ -1,14 +1,15 @@
 {
-  "name": "workspace",
-  "version": "0.0.0",
+  "name": "@jvlsoft/ngx-dynamic-form",
+  "version": "0.0.0-development",
   "scripts": {
     "ng": "node ./node_modules/@angular/cli/bin/ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ngx-dynamic-form",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "semantic-release": "semantic-release --branches master"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^16.2.0",
     "@angular/common": "^16.2.0",
@@ -39,6 +40,14 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^16.2.0",
-    "typescript": "~5.1.3"
+    "typescript": "~5.1.3",
+    "semantic-release": "^24.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jvlsoft-dev/ngx-dynamic-form.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
