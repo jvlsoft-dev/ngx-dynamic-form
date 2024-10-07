@@ -7,7 +7,7 @@
     "build": "ng build ngx-dynamic-form",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release --branches master"
   },
   "private": false,
   "dependencies": {
