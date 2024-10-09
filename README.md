@@ -78,7 +78,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dynamic-form',
-  template: `<ngx-dynamic-form [config]="formConfig"></ngx-dynamic-form>`,
+  template: `<ngx-dynamic-form [config]="formConfig" [onlyFields]="false" title="User" [hasPrefix]="false"
+        [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>`,
 })
 export class DynamicFormComponent {
   formConfig = [
@@ -104,6 +105,9 @@ export class DynamicFormComponent {
   ];
 }
 ```
+For:
+![image](https://github.com/user-attachments/assets/f570023c-9bed-4df4-ae1e-8c52edd38b3d)
+
 
 ## API
 
