@@ -3,5 +3,12 @@
   "dest": "../../dist/ngx-dynamic-form",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "bootstrap-icons",
+    "@ng-select/ng-select",
+    "@types/lodash",
+    "bootstrap",
+    "lodash"
+  ]
 }

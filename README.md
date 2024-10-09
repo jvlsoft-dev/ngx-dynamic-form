@@ -1,6 +1,6 @@
 # ngx-dynamic-form
 
-The `ngx-dynamic-form` is a library that works in Angular 16 with Bootstrap 5 and FontAwesome to generate forms in a simple and dynamic way.
+The `ngx-dynamic-form` is a library that works in Angular 16 with Bootstrap 5 to generate forms in a simple and dynamic way.
 
 ## Table of Contents
 
@@ -16,16 +16,18 @@ The `ngx-dynamic-form` is a library that works in Angular 16 with Bootstrap 5 an
 To install the library, run:
 
 ```bash
-yarn add ngx-dynamic-form
+yarn add @jvlsoft/ngx-dynamic-form
 ```
 
 Then add the following styles:
 
 ```scss
-@import "~node_modules/bootstrap/dist/css/bootstrap.min.css";
-@import "~node_modules/@fortawesome/fontawesome-free/css/all.css";
-@import "~node_modules/@ng-select/ng-select/themes/default.theme.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
 ```
+
+Note: **Make sure your project has routing, otherwise the library won't work**
 
 ## Building the Project
 
@@ -58,7 +60,7 @@ Then navigate to `http://localhost:4200/` in your browser.
 Here's a basic example of how to use the library in your Angular project:
 
 ```typescript
-import { DynamicFormComponent, FormInputComponent } from 'ngx-dynamic-form';
+import { DynamicFormComponent, FormInputComponent } from '@jvlsoft/ngx-dynamic-form';
 
 @NgModule({
   imports: [
@@ -76,7 +78,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dynamic-form',
-  template: `<ngx-dynamic-form [config]="formConfig"></ngx-dynamic-form>`,
+  template: `<ngx-dynamic-form [config]="formConfig" [onlyFields]="false" title="User" [hasPrefix]="false"
+        [saveButton]="false" [canGoBack]="false"></ngx-dynamic-form>`,
 })
 export class DynamicFormComponent {
   formConfig = [
@@ -102,6 +105,9 @@ export class DynamicFormComponent {
   ];
 }
 ```
+For:
+![image](https://github.com/user-attachments/assets/f570023c-9bed-4df4-ae1e-8c52edd38b3d)
+
 
 ## API
 
