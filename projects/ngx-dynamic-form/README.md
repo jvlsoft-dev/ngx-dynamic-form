@@ -1,6 +1,6 @@
 # ngx-dynamic-form
 
-The `ngx-dynamic-form` is a library that works in Angular 16 with Bootstrap 5 and FontAwesome to generate forms in a simple and dynamic way.
+The `ngx-dynamic-form` is a library that works in Angular 16 with Bootstrap 5 to generate forms in a simple and dynamic way.
 
 ## Installation
 
@@ -14,7 +14,7 @@ Then add the following styles:
 
 ```scss
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~@fortawesome/fontawesome-free/css/all.css";
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 @import "~@ng-select/ng-select/themes/default.theme.css";
 ```
 

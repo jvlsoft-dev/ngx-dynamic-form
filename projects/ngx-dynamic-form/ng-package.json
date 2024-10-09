@@ -5,7 +5,7 @@
     "entryFile": "src/public-api.ts"
   },
   "allowedNonPeerDependencies": [
-    "@fortawesome/fontawesome-free",
+    "bootstrap-icons",
     "@ng-select/ng-select",
     "@types/lodash",
     "bootstrap",
