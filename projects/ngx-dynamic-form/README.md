@@ -7,23 +7,25 @@ The `ngx-dynamic-form` is a library that works in Angular 16 with Bootstrap 5 an
 To install the library, run:
 
 ```bash
-npm install ngx-dynamic-form
+yarn add @jvlsoft/ngx-dynamic-form
 ```
 
 Then add the following styles:
 
 ```scss
-@import "~node_modules/bootstrap/dist/css/bootstrap.min.css";
-@import "~node_modules/@fortawesome/fontawesome-free/css/all.css";
-@import "~node_modules/@ng-select/ng-select/themes/default.theme.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
 ```
+
+Note: **Make sure your project has routing, otherwise the library won't work**
 
 ## Usage
 
 Here's a basic example of how to use the library in your Angular project:
 
 ```typescript
-import { DynamicFormComponent, FormInputComponent } from 'ngx-dynamic-form';
+import { DynamicFormComponent, FormInputComponent } from '@jvlsoft/ngx-dynamic-form';
 
 @NgModule({
   imports: [
