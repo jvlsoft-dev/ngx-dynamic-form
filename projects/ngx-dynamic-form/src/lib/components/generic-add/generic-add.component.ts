@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { takeUntil, finalize, Subscription } from 'rxjs';
 import { DynamicFormComponent } from '../../ngx-dynamic-form.component';
 import { IFieldService } from '../../interfaces/ifield-service';
 import { DestroyComponent } from '../destroy/destroy.component';
 import { IFieldConfig } from '../../interfaces/ifield-config';
+import { messages } from '../../constants/lang.es';
 
 @Component({
   selector: 'generic-add',
@@ -39,13 +40,20 @@ export abstract class GenericAddComponent extends DestroyComponent {
    * Reference to the `DynamicFormComponent` object on the view.
    */
   @ViewChild(DynamicFormComponent) form!: DynamicFormComponent;
+  protected activatedRoute?: ActivatedRoute;
+  protected router?: Router;
+  protected cdr: ChangeDetectorRef;
 
   constructor(
-    protected router: Router,
-    protected activatedRoute: ActivatedRoute,
-    protected cdr: ChangeDetectorRef
   ) {
     super();
+    this.cdr = inject(ChangeDetectorRef)
+    try {
+      this.router = inject(Router)
+      this.activatedRoute = inject(ActivatedRoute)
+    } catch (error) {
+      console.warn(`${messages.NO_ROUTE_PROVIDER}\n${error}`);
+    }
   }
 
   /**
@@ -57,7 +65,7 @@ export abstract class GenericAddComponent extends DestroyComponent {
 
   ngAfterViewInit(): void {
     // get the item if id is defined
-    this.id = this.activatedRoute.snapshot.params['id'];
+    this.id = this.activatedRoute?.snapshot.params['id'];
     !!this.id ? this.getData() : this.form.patchValues({ id: null });
   }
 
@@ -117,6 +125,6 @@ export abstract class GenericAddComponent extends DestroyComponent {
         }),
         takeUntil(this.destroy$)
       )
-      .subscribe(async () => await this.router.navigateByUrl(this.listUrl));
+      .subscribe(async () => await this.router?.navigateByUrl(this.listUrl));
   }
 }

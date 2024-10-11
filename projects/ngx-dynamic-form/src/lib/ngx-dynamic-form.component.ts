@@ -2,6 +2,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  inject,
   Input,
   OnInit,
   Output,
@@ -15,6 +16,7 @@ import { DynamicFieldDirective } from './directives/dynamic-field.directive';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormHeaderComponent } from './components/form-header/form-header.component';
 import { ActivatedRoute } from '@angular/router';
+import { messages } from './constants/lang.es';
 
 @Component({
   selector: 'ngx-dynamic-form',
@@ -26,7 +28,7 @@ import { ActivatedRoute } from '@angular/router';
     DynamicFieldDirective,
     FormButtonComponent,
     FormHeaderComponent,
-  ],
+  ]
 })
 export class DynamicFormComponent implements OnInit {
   /**
@@ -56,13 +58,21 @@ export class DynamicFormComponent implements OnInit {
   @Input() form!: FormGroup;
   @Output() save: EventEmitter<any> = new EventEmitter<any>();
   isLoading: boolean = false;
+  private _route?: ActivatedRoute;
 
   constructor(
     private _fb: FormBuilder,
     public _formService: FormHelperService,
     private _cdr: ChangeDetectorRef,
-    private _route: ActivatedRoute
-  ) {}
+  ) {
+    try {
+      this._route = inject(ActivatedRoute)
+    } catch (error) {
+      console.warn(
+        `${messages.NO_ROUTE_PROVIDER}\n${error}`
+      );
+    }
+  }
 
   get value() {
     return this.form.value;
@@ -77,7 +87,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = this._route.snapshot.params['id'];
+    const id = this._route?.snapshot.params['id'];
     this.title =
       (!!this.hasPrefix ? (!!id ? 'Editar ' : 'Crear ') : '') + this.title;
     // Build form if is not define.

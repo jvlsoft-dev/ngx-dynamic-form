@@ -30,12 +30,9 @@ import { Validators } from '@angular/forms';
 export class AddComponent extends GenericAddComponent implements AfterViewInit {
   override service: IFieldService;
   constructor(
-    router: Router,
-    activatedRoute: ActivatedRoute,
-    cdr: ChangeDetectorRef,
     private _demoService: DemoService
   ) {
-    super(router, activatedRoute, cdr);
+    super();
     this.service = _demoService;
     this.title = 'Person';
     this.config = [
