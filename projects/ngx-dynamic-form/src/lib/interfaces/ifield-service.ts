@@ -8,7 +8,7 @@ export interface IFieldService {
      * @param skip - Items skip number.
      * @param limit - Items limit.
      */
-    all: (query?: any, skip?: number, limit?: number) => Observable<IRows>
+    all: (query?: any, skip?: number, limit?: number, order?: string) => Observable<IRows>
 
     /**
      * Make a GET request to the backend for the given model
