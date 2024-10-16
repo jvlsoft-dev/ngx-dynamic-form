@@ -12,6 +12,9 @@ export * from './lib/fields/form-radio/form-radio.component';
 export * from './lib/fields/form-select/form-select.component';
 export * from './lib/fields/form-text-area/form-text-area.component';
 // Interfaces
+export * from './lib/interfaces/ifield';
 export * from './lib/interfaces/ifield-config';
 export * from './lib/interfaces/ifield-options';
 export * from './lib/interfaces/ifield-service';
+// Directives
+export * from './lib/directives/dynamic-field.directive';
