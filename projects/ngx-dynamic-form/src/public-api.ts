@@ -5,6 +5,7 @@
 // Components
 export * from './lib/ngx-dynamic-form.component';
 export * from './lib/components/generic-add/generic-add.component'
+export * from './lib/components/destroy/destroy.component'
 // Fields
 export * from './lib/fields/form-checkbox/form-checkbox.component';
 export * from './lib/fields/form-input/form-input.component';
