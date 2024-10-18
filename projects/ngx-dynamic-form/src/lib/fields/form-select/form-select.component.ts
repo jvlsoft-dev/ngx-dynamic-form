@@ -35,7 +35,7 @@ export class FormSelectComponent extends DestroyComponent implements IField {
   config!: IFieldConfig;
   group!: FormGroup<any>;
   maxNumber = Number.MAX_SAFE_INTEGER;
-  requiredField = messages.REQUIRED_FIELD
+  requiredField = messages.REQUIRED_FIELD;
   skipSelect: number = 0;
   input$ = new Subject<string>();
   loading$ = new BehaviorSubject(false);
@@ -74,7 +74,7 @@ export class FormSelectComponent extends DestroyComponent implements IField {
   }
 
   /**
-   * Scroll event handler.
+   * Scroll event handler. Increases the item limit and reloads them.
    * @param searchTerm - String to search.
    */
   onScroll(searchTerm?: string) {

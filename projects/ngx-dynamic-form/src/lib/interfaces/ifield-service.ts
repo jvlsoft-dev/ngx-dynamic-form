@@ -22,7 +22,7 @@ export interface IFieldService {
     /**
      * Make a POST or PUT request to the backend to the given model to save the data
      *
-     * @param - item The object data to save
+     * @param item The object data to save
      * @param toastBool - Define if the method launch or not a status toast using `HotToastService`
      * @param args - The query params
      * @returns Returns an `Observable` with the saved or updated object

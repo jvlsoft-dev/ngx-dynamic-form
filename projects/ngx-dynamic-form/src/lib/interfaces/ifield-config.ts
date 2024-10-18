@@ -17,7 +17,7 @@ export interface IFieldConfig {
    */
   class: string;
   /**
-   * Component label.
+   * Component label to show above this.
    */
   label?: string;
   /**
@@ -49,7 +49,7 @@ export interface IFieldConfig {
    */
   readonly?: boolean;
   /**
-   * Default value.
+   * Field default value. Example: 'John Doe'
    */
   value?: any;
   /**
@@ -64,7 +64,7 @@ export interface IFieldConfig {
    */
   component?: ComponentRef<any>;
   /**
-   * Array of ValidatorFn.
+   * Array of ValidatorFn to be executed in the field.
    */
   validation?: ValidatorFn[];
   /**

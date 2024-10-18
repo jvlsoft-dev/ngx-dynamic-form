@@ -38,7 +38,7 @@ export interface IInputConfig {
    */
   step?: number;
   /**
-   * If is true show the valid style.
+   * If is true show other style when the component is valid.
    */
   validStyle?: boolean;
 }
@@ -49,7 +49,7 @@ export interface IRadioConfig {
    */
   class?: string;
   /**
-   * Radio options.
+   * Radio options. Example: ['Java', 'Python', 'JavaScript']
    */
   options?: any[];
   /**

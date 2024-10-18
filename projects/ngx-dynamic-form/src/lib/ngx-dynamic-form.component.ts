@@ -28,7 +28,7 @@ import { messages } from './constants/lang.es';
     DynamicFieldDirective,
     FormButtonComponent,
     FormHeaderComponent,
-  ]
+  ],
 })
 export class DynamicFormComponent implements OnInit {
   /**
@@ -36,7 +36,7 @@ export class DynamicFormComponent implements OnInit {
    */
   @Input() config: IFieldConfig[] = [];
   /**
-   * Form Title.
+   * Title to show in the header.
    */
   @Input() title: string = '';
   /**
@@ -55,7 +55,13 @@ export class DynamicFormComponent implements OnInit {
    * If the form has a button to save. Default true.
    */
   @Input() saveButton: boolean = true;
+  /**
+   * FormGroup to which the fields belong.
+   */
   @Input() form!: FormGroup;
+  /**
+   * Outputs the form values.
+   */
   @Output() save: EventEmitter<any> = new EventEmitter<any>();
   isLoading: boolean = false;
   private _route?: ActivatedRoute;
@@ -63,14 +69,12 @@ export class DynamicFormComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     public _formService: FormHelperService,
-    private _cdr: ChangeDetectorRef,
+    private _cdr: ChangeDetectorRef
   ) {
     try {
-      this._route = inject(ActivatedRoute)
+      this._route = inject(ActivatedRoute);
     } catch (error) {
-      console.warn(
-        `${messages.NO_ROUTE_PROVIDER}\n${error}`
-      );
+      console.warn(`${messages.NO_ROUTE_PROVIDER}\n${error}`);
     }
   }
 
@@ -150,7 +154,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   /**
-   * Retrieves a child control given the control's name or path.
+   * Returns a child control given the control's name or path.
    */
   getControl(control: any) {
     return this.form.get(control);
