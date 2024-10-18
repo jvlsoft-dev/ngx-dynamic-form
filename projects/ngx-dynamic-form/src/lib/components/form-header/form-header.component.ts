@@ -8,7 +8,13 @@ import { CommonModule, Location } from '@angular/common';
   standalone: true,
 })
 export class FormHeaderComponent {
+  /**
+   * Title to show in the header.
+   */
   @Input() title: string = '';
+  /**
+   * If is true the component shows a button to go back.
+   */
   @Input() canGoBack = true;
 
   constructor(private location: Location) {}

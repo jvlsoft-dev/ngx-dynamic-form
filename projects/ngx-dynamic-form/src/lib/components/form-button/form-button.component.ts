@@ -10,7 +10,16 @@ import { messages } from '../../constants/lang.es';
   imports: [CommonModule, ReactiveFormsModule],
 })
 export class FormButtonComponent {
+  /**
+   * Message to show in the button body.
+   */
   @Input() label: string = messages.SAVE;
+  /**
+   * Form group to which the button belongs.
+   */
   @Input() group!: FormGroup;
+  /**
+   * If is true the component is loading.
+   */
   @Input() isLoading: boolean = true;
 }

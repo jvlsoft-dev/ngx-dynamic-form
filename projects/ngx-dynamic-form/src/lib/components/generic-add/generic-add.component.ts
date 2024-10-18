@@ -93,7 +93,7 @@ export abstract class GenericAddComponent extends DestroyComponent {
 
   /**
    * Process data from the server before patching values to form.
-   * @param data
+   * @param data - Data to process.
    * @returns Processed data.
    */
   parseData(data: any) {
@@ -102,7 +102,7 @@ export abstract class GenericAddComponent extends DestroyComponent {
 
   /**
    * Process form data before submit to server.
-   * @param data
+   * @param data - Data to process.
    * @returns Processed data.
    */
   processSubmit(data: any) {
